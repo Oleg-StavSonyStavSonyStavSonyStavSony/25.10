@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace _25._10
 {
@@ -8,7 +9,12 @@ namespace _25._10
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter FIO");
+            User user1 = new User();
+            List<User> userlistSeve = new List<User>{
+            new User ( "VAsya", "Vasilevich", 25 ),
+            new User("Petya", "Petrovich", 22)};
+            user1.SeveListUser(userlistSeve);
+            /*Console.WriteLine("Enter FIO");
             Console.WriteLine("Enter FirstName");
             User user = new User();
             user.FirstName = Console.ReadLine();
@@ -17,36 +23,24 @@ namespace _25._10
             user.LastName  = Console.ReadLine();
 
             Console.WriteLine("Enter Age");
-            user.Age = int.Parse(Console.ReadLine());
+            user.Age = int.Parse(Console.ReadLine());*/
             //File.Delete("text.txt");
 
-            File.AppendAllText("text.txt", $"Name : {user.FirstName}\nLName : {user.LastName}\nAge : {user.Age}\n");
-            File.AppendAllText("text.txt",  "--------------------------------------------------------\n");
-            // File.ReadAllLines("text.txt").ToList().ForEach(Console.WriteLine);
-           
             // считать текст в массив строк
-            User user1 = new User();
-           // File.ReadAllLines("text.txt").ToList().ForEach(Console.WriteLine);
-            string[] arr = File.ReadAllLines("text.txt");
 
-            //Console.WriteLine($"{arr[0].Split(":")[1]}");
-
-            for (int i = 0; i < arr.Length; i+=4)
+            List<User> userlist = new List<User>();
+            user1.LoadListUser(userlist);
+            foreach (var item in userlist)
             {
-                //if ((i%3 == i + 3) )
-              //  {
-               //     continue;
-              //  }
-                arr[i].Split(":");
-                user1.FirstName = arr[i].Split(":")[i];
-                arr[i].Split(":");
-                user1.LastName = arr[i+1].Split(":")[i+1];
-                arr[i].Split(":");
-                user1.Age = int.Parse(arr[i+2].Split(":")[i+1]);
-                Console.WriteLine(user1);
+                Console.WriteLine(item);
             }
 
-          
+            //File.ReadAllLines("text.txt").ToList().ForEach(Console.WriteLine);
+
+
+
+
+
 
 
         }

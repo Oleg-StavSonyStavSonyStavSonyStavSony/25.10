@@ -1,3 +1,7 @@
+using System.IO;
+using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace _25._10
 {
@@ -17,9 +21,31 @@ public class User {
             LastName = last;
             Age = age;
         }
-        public override string ToString() =>  $"{FirstName}\n{LastName}-\n{Age}";
-            
-        
-        
+        public override string ToString() =>  $"{FirstName}\n{LastName}-\n{Age}\n------------------------";
+
+         public List<User> LoadListUser (List<User> list){
+            // File.ReadAllLines("text.txt").ToList().ForEach(Console.WriteLine);
+            string[] arr = File.ReadAllLines("text.txt");
+            int y = 0;
+            User user1 = new User();
+            for (int i = 0; i < arr.Length; i+=4, y++)
+            {
+
+                user1.FirstName = arr[i].Split(":")[1];
+
+                user1.LastName = arr[i+1].Split(":")[1];
+
+                user1.Age = int.Parse(arr[i+2].Split(":")[1]);
+                //Console.WriteLine(user1);
+                list.Add(user1);
+            }
+             return list;
+            }         public void SeveListUser (List<User> list){
+            for (int i = 0; i < list.Count; i++)
+            {
+            File.AppendAllText("text.txt", $"Name : {list[i].FirstName}\nLName : {list[i].LastName}\nAge : {list[i].Age}\n");
+            File.AppendAllText("text.txt",  "--------------------------------------------------------\n");
+            }
     }
+}
 }
