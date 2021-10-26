@@ -30,11 +30,8 @@ public class User {
             User user1 = new User();
             for (int i = 0; i < arr.Length; i+=4, y++)
             {
-
                 user1.FirstName = arr[i].Split(":")[1];
-
                 user1.LastName = arr[i+1].Split(":")[1];
-
                 user1.Age = int.Parse(arr[i+2].Split(":")[1]);
                 //Console.WriteLine(user1);
                 list.Add(user1);
@@ -46,6 +43,6 @@ public class User {
             File.AppendAllText("text.txt", $"Name : {list[i].FirstName}\nLName : {list[i].LastName}\nAge : {list[i].Age}\n");
             File.AppendAllText("text.txt",  "--------------------------------------------------------\n");
             }
+         }
     }
-}
 }

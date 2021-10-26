@@ -34,14 +34,7 @@ namespace _25._10
             {
                 Console.WriteLine(item);
             }
-
             //File.ReadAllLines("text.txt").ToList().ForEach(Console.WriteLine);
-
-
-
-
-
-
 
         }
     }
