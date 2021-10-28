@@ -37,7 +37,8 @@ public class User {
                 list.Add(user1);
             }
              return list;
-            }         public void SeveListUser (List<User> list){
+            }        
+            public void SeveListUser (List<User> list){
             for (int i = 0; i < list.Count; i++)
             {
             File.AppendAllText("text.txt", $"Name : {list[i].FirstName}\nLName : {list[i].LastName}\nAge : {list[i].Age}\n");
